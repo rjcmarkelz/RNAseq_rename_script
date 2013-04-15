@@ -16,18 +16,28 @@ I need to write a script that will do/incorporate the following things in python
 7: Use Trello to collaborate with Mike and Upendra
 
 
+
 Resources:
 http://stackoverflow.com/questions/11068419/check-if-file-is-symlink-in-python
-http://magazine.redhat.com/2008/02/07/python-for-bash-scripters-a-well-kept-secret/
 
+#######System Calls from Python
+http://magazine.redhat.com/2008/02/07/python-for-bash-scripters-a-well-kept-secret/
+#!/usr/bin/env pythonimport subprocess subprocess.call("ls -l", shell=True)http://docs.python.org/2/library/subprocess.html
+http://xahlee.info/perl-python/system_calls.html
+import subprocesssubprocess.Popen([r"gzip","-d", "x.txt.gz"]).wait()
+http://www.cyberciti.biz/faq/python-execute-unix-linux-command-examples/
+
+
+########
 Hierarchy Coping Without files in them.
 http://www.linuxquestions.org/questions/linux-newbie-8/copy-directory-structure-only-208796/
 http://mywiki.wooledge.org/BashFAQ/010
 http://stackoverflow.com/questions/4073969/copy-folder-structure-sans-files-from-one-location-to-another
 http://www.lazysystemadmin.com/2010/07/linux-copy-only-directory-structure.html
 
+########
 Symbolic links in Bash
-ln  command makes a sold link
+ln  command makes a solid link
 ln -s makes a soft link
 http://en.wikipedia.org/wiki/Symbolic_link
 
