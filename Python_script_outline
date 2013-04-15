@@ -1,0 +1,51 @@
+Python programming project:
+Mike shared a google doc with me BRapaRILs. 
+This is a list of the labeled genotypes collected in the field, and the genotypes based on the SNPs.
+Example: 402.04      303
+The 404.04 represents the old RIL identifier, while the 303 represents the RIL based on genotype.
+    The .04 represents the block that the RIL was in.
+    Upendra will provide me with a list of the blocks and what treatments they represent.
+
+I need to write a script that will do/incorporate the following things in python:
+1: copy the old directory structure currently organized by block
+2: make a symbolic link between the old file and the new file where the old file actually contains all of the seq data
+3: pass bash commands in python (example ln -s)
+4: try to use a library to work with the symbolic representations and/or for the bash command pass
+5: Make new directories and links between BAM and fastQ files
+6: Use Github to do all of these things
+7: Use Trello to collaborate with Mike and Upendra
+
+
+Resources:
+http://stackoverflow.com/questions/11068419/check-if-file-is-symlink-in-python
+http://magazine.redhat.com/2008/02/07/python-for-bash-scripters-a-well-kept-secret/
+
+Hierarchy Coping Without files in them.
+http://www.linuxquestions.org/questions/linux-newbie-8/copy-directory-structure-only-208796/
+http://mywiki.wooledge.org/BashFAQ/010
+http://stackoverflow.com/questions/4073969/copy-folder-structure-sans-files-from-one-location-to-another
+http://www.lazysystemadmin.com/2010/07/linux-copy-only-directory-structure.html
+
+Symbolic links in Bash
+ln  command makes a sold link
+ln -s makes a soft link
+http://en.wikipedia.org/wiki/Symbolic_link
+
+
+
+####2013_04_11 Mike and Upendra
+Problems with the genotyping data:
+1) significant contamination
+       Figure out level of contamination threshold we will accept
+
+2) How to rename things?
+      Cody will make script that creates symbolic links between old and renamed files.
+             This will potentially allow for reduced confusion in the future, and keep only one file
+
+3) Identify break points
+      HMM R package for Dan F
+      Potential custom script from Mike, but we will wait to hear back from Dan
+
+4) Upendra Re-maps parents
+       Merge actual parent 1 and parent 2 and send the file to Mike
+
