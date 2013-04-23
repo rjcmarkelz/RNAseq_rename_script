@@ -1,12 +1,25 @@
-<<<<<<< HEAD
-
-=======
+#!/usr/bin/python
 #Renaming Script v0.1
 #2013_04_19
-#This script should rename files from upendra's directory structure
-#Script outline
-#Copy tree structure
-#Symbolic links
+
+#problem
+#import the list of old/new file names
+#input from user the directory where the files are
+#input from user where the directory of results is to go
+#read all of the file names in from the file directory
+#search each file name for _RIL_XXX
+#compare this against the list of old/new names
+#rename the variables based on the list
+#create symbolic links with the new names to the old file names
+#append a .rn.fq 
+
+
+
+
+
+
+
+
 
 #!/usr/bin/python
 import os, sys
@@ -38,4 +51,5 @@ def renamer(files, pattern, replacement):
               os.path.join(os.path.dirname(pathname), new_filename))
 
 renamer("*.doc", r"^(.*)\.doc$", r"new(\1).doc")
->>>>>>> cc746646cfc67751df68d0281b48a7d8c6222d65
+
+
