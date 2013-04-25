@@ -2,13 +2,25 @@
 
 import os, sys
 
-# Open a file
+
 path = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof/"
 dirs = os.listdir( path )
-
 # This would print all the files and directories
 for file in dirs:
-   print file
+    print file
+
+# Open a file
+filelist =open('filelist.txt', 'w')
+
+path = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof/"
+dirs = os.listdir( path )
+print dirs
+# This would print all the files and directories
+for file in dirs:
+    print file
+
+
+
 
 
 
