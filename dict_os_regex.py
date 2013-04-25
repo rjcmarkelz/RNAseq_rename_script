@@ -34,10 +34,10 @@ print keys
 print values
 
 # Open a file
-#cody_2 path
+#cody_2 path laptop
 #path = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof/"
 
-#cody_1 path
+#cody_1 path home imac
 path = '/Users/Cody/Documents/Maloof Lab/My Brassica/Block2/project.maloof/'
 pathfiles = os.listdir(path)
 
@@ -63,19 +63,21 @@ for file in pathfiles:
         print lead
         print capture
         print RIL_string
-        
+
+print 
+print 
+print
+
 for key in RN_Dict:
     link_name = source_name.replace(key, RN_Dict[key])
+    print source_name
     print link_name
-            #os.symlink(path + source_name, link_name)
+    os.symlink(source_name, link_name)
             #print file
             #print source_name
             #print link_name
 
-print
-print
-print
-print lead
+
 # for file in pathfiles:
 #     source_name = file
 #     link_name =  '%s.rn.fq' %(source_name)
