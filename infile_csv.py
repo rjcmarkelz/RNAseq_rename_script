@@ -6,9 +6,9 @@
 # for line in csv_file:
 # 	print line
 
+#http://stackoverflow.com/questions/15580425/os-symlink-vs-ln-s
 
-
-
+#JD002_6_NoIndex_L005_R1_all.fastq.gz.Blk2_RIL_332_CR.fq
 
 
 import csv
