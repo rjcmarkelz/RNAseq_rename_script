@@ -63,19 +63,31 @@ for file in pathfiles:
         print lead
         print capture
         print RIL_string
-
+        print 
+        print 
+        print
+        
+        for key in RN_Dict:
+            link_name = source_name.replace(RIL_string, RN_Dict[key])
+            print 'Source name is:'
+            print source_name
+            print '----------------'
+            print 'Link name is:'
+            print link_name
+            print '----------------'
+            print '----------------'
 print 
 print 
 print
 
-for key in RN_Dict:
-    link_name = source_name.replace(key, RN_Dict[key])
-    print source_name
-    print link_name
-    os.symlink(source_name, link_name)
-            #print file
-            #print source_name
-            #print link_name
+# for key in RN_Dict:
+#     link_name = source_name.replace(key, RN_Dict[key])
+#     print source_name
+#     print link_name
+#     os.symlink('source_name', 'link_name')
+#             print file
+#             print source_name
+#             print link_name
 
 
 # for file in pathfiles:
