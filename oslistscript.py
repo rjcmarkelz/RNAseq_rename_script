@@ -41,3 +41,8 @@ def renamer(files, pattern, replacement):
               os.path.join(os.path.dirname(pathname), new_filename))
 
 renamer("*.doc", r"^(.*)\.doc$", r"new(\1).doc")
+
+
+import re
+p = re.compile(r'_')
+p.split(filename, 1) #where filename is CHEESE_CHEESE_TYPE.***

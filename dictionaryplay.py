@@ -20,5 +20,5 @@ print RN_Dict
 
 for key in RN_Dict:
     text_2 = text.replace(key, RN_Dict[key])
-    print text
+    #print text
     print text_2
