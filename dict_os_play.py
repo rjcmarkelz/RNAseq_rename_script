@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import os 
+import re
 
 RN_Dict = {
 'RIL_360' :'RIL_1.rn',
@@ -12,7 +13,11 @@ RN_Dict = {
 print RN_Dict
 
 # Open a file
-path = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof/"
+#cody_2 path
+#path = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof/"
+
+#cody_1 path
+path = /Users/Cody/Documents/Maloof Lab/My Brassica/Block2/project.maloof/
 pathfiles = os.listdir(path)
 
 for file in pathfiles:
