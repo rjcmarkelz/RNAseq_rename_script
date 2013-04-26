@@ -4,7 +4,7 @@ RN_Dict = {
 'RIL_259' :'RIL_103(contaminated?)',
 'RIL_251' :'RIL_IMB211',
 'RIL_113' :'(SIG_CON)',
-'RIL_265' :'RIL_113.rn',
+'RIL_265' :'RIL_113.rn+dddd',
 'RIL_255' :'RIL_154.rn',
 }
 
@@ -15,8 +15,11 @@ print keys
 print values
 
 parenthesis = "("
+plus = "+"
 for keys in RN_Dict:
 	if len(RN_Dict[keys]) > 7 and parenthesis in RN_Dict[keys]:
 		print "These might be contaminated:", RN_Dict[keys]
-	else:
-	    print RN_Dict[keys]
+	elif len(RN_Dict[keys]) > 7 and plus in RN_Dict[keys]:
+	    print "These might be contaminated:", RN_Dict[keys]
+	else :
+		print RN_Dict[keys]
