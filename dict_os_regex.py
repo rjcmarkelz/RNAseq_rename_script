@@ -21,7 +21,7 @@ rg = re.compile(re1+re2+re3+re4+re5+re6+re7+re8+re9+re10+re11,re.IGNORECASE|re.D
 
 RN_Dict = {
 'RIL_360' :'RIL_1.rn',
-'RIL_73'  :'RIL_1.rn',
+'RIL_73'  :'RIL_4.rn',
 'RIL_259' :'RIL_103.rn',
 'RIL_251' :'RIL_104.rn',
 'RIL_113' :'RIL_113.rn',
@@ -36,10 +36,13 @@ print values
 
 # Open a file
 #cody_2 path laptop
-path = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof/"
-path2 = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof.renamed/"
+#path = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof/"
+#path2 = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof.renamed/"
+
 #cody_1 path home imac
-#path = '/Users/Cody/Documents/Maloof Lab/My Brassica/Block2/project.maloof/'
+path = "/Users/Cody/Documents/Maloof Lab/My Brassica/Block2/project.maloof/"
+path2= "/Users/Cody/Documents/Maloof Lab/My Brassica/Block2/project.maloof.rename/"
+
 pathfiles = os.listdir(path)
 
 for file in pathfiles:
@@ -72,7 +75,7 @@ for file in pathfiles:
             symlinkpath   = path2 + link_name_y
             print symlinktarget
             print symlinkpath
-            os.symlink(symlinktarget, symlinkpath)
+            #os.symlink(symlinktarget, symlinkpath)
         else: 
             print "No it is not!"   
                 
