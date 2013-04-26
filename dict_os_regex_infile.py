@@ -11,7 +11,7 @@ import csv
 #path = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof/"
 #path2 = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof.renamed/"
 
-cody_1 path home imac
+#cody_1 path home imac
 path  = "/Users/Cody/Documents/Maloof Lab/My Brassica/Block2/project.maloof/"
 path2 = "/Users/Cody/Documents/Maloof Lab/My Brassica/Block2/project.maloof.rename/"
 
@@ -33,24 +33,25 @@ pathfiles = os.listdir(path)
 ###################################################
 ###################################################
 
-RN_Dict = dict()
-with open('block_2_3_nocontaminants_play.csv', 'rU') as f:
-    reader = csv.reader(f)
-    for row in reader:
-        old = row[0]
-        new = row[1]
-        RN_Dict[old] = new
-        print RN_Dict
+# RN_Dict = dict()
+# with open('block_2_3_nocontaminants_play.csv', 'rU') as f:
+#     reader = csv.reader(f)
+#     for row in reader:
+#         old = row[0]
+#         new = row[1]
+#         RN_Dict[old] = new
+#         print RN_Dict
 
 #Small play dictionary for quick testing
-# RN_Dict = {
-# 'RIL_360.12' :'RIL_1',
-# 'RIL_73'  :'RIL_4',
-# 'RIL_259' :'RIL_103',
-# 'RIL_251' :'RIL_104',
-# 'RIL_113' :'RIL_113',
-# 'RIL_265' :'RIL_113.rn',
-# }
+
+RN_Dict = {
+'RIL_360.12' :'RIL_1(contaminated?)',
+'RIL_73'  :'RIL_4',
+'RIL_259' :'RIL_103(contaminated?)',
+'RIL_251' :'RIL_104',
+'RIL_113' :'SIG_CON',
+'RIL_265' :'RIL_113.rn',
+}
 
 print RN_Dict
 keys   = RN_Dict.keys()
@@ -59,13 +60,12 @@ print keys
 print values
 
 
-
-
 ######################################################
 ######################################################
 
-#text string example
-#txt = 'JD002_6_NoIndex_L005_R1_all.fastq.gz.Blk2_RIL_332676_CR.fq'
+#text string examples
+#'JD002_6_NoIndex_L005_R1_all.fastq.gz.Blk2_RIL_332_CR.fq'
+#'JD002_6_NoIndex_L005_R1_all.fastq.gz.Blk2_RIL_IMB211_CR.fq'
 re1 = '.*?'     # Match frontend
 re2 = '(Blk)'   # Blk
 re3 = '(\\d+)'  # Blk_number
@@ -99,7 +99,8 @@ for file in pathfiles:
         treatment   = match.group(8)
         dot         = match.group(9)
         fq          = match.group(10)
-
+        
+        #remake block number to match dictionary key
         conv_Blk_num = '.' + str(Blk_number).zfill(2)
         print conv_Blk_num
 
