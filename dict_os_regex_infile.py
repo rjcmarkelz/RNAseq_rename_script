@@ -3,32 +3,28 @@ import os
 import re
 import csv
 
-#text string example
-#txt = 'JD002_6_NoIndex_L005_R1_all.fastq.gz.Blk2_RIL_332676_CR.fq'
-re1 = '.*?'	    # Match frontend
-re2 = '(Blk)'	# Blk
-re3 = '(\\d+)'  # Blk_number
-re4 = '(.)'	    # underscore (any character)
-re5 = '(RIL)'	# RIL
-re6 = '(_)'	    # underscore (any character)
-re7 = '(\\d+)'	# RIL_number
-re8 = '(.)'	                # underscore (any character)
-re9='((?:[a-z][a-z]+))'  	# Treatment
-re10='(.)'	                # dot (any character)
-re11='((?:[a-z][a-z]+))'	# fq 
 
-rg = re.compile(re1+re2+re3+re4+re5+re6+re7+re8+re9+re10+re11,re.IGNORECASE|re.DOTALL)
 
-######################################################
-######################################################
-RN_Dict = {
-'RIL_360.12' :'RIL_1.rn',
-'RIL_73'  :'RIL_4.rn',
-'RIL_259' :'RIL_103.rn',
-'RIL_251' :'RIL_104.rn',
-'RIL_113' :'RIL_113.rn',
-'RIL_265' :'RIL_113.rn',
-}
+###################################################
+###################################################
+
+RN_Dict = dict()
+with open('block_2_3_nocontaminants_play.csv', 'rU') as f:
+    reader = csv.reader(f)
+    for row in reader:
+        old = row[0]
+        new = row[1]
+        RN_Dict[old] = new
+        print RN_Dict
+
+# RN_Dict = {
+# 'RIL_360.12' :'RIL_1.rn',
+# 'RIL_73'  :'RIL_4.rn',
+# 'RIL_259' :'RIL_103.rn',
+# 'RIL_251' :'RIL_104.rn',
+# 'RIL_113' :'RIL_113.rn',
+# 'RIL_265' :'RIL_113.rn',
+# }
 
 print RN_Dict
 keys   = RN_Dict.keys()
@@ -36,15 +32,7 @@ values = RN_Dict.values()
 print keys
 print values
 
-#working infile script
-# data = dict()
-# with open('block_2_3_nocontaminants_play.csv', 'rU') as f:
-#     reader = csv.reader(f)
-#     for row in reader:
-#         old = row[0]
-#         new = row[1]
-#         data[old] = new
-#         print data
+
 
 ######################################################
 ######################################################
@@ -61,6 +49,23 @@ pathfiles = os.listdir(path)
 ######################################################
 ######################################################
 
+#text string example
+#txt = 'JD002_6_NoIndex_L005_R1_all.fastq.gz.Blk2_RIL_332676_CR.fq'
+re1 = '.*?'     # Match frontend
+re2 = '(Blk)'   # Blk
+re3 = '(\\d+)'  # Blk_number
+re4 = '(.)'     # underscore (any character)
+re5 = '(RIL)'   # RIL
+re6 = '(_)'     # underscore (any character)
+re7 = '([A-Z0-9]+)'  # RIL_number
+re8 = '(.)'                 # underscore (any character)
+re9='((?:[a-z][a-z]+))'     # Treatment
+re10='(.)'                  # dot (any character)
+re11='((?:[a-z][a-z]+))'    # fq 
+
+rg = re.compile(re1+re2+re3+re4+re5+re6+re7+re8+re9+re10+re11,re.IGNORECASE|re.DOTALL)
+######################################################
+######################################################
 
 for file in pathfiles:
     source_name = file
