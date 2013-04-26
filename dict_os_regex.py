@@ -27,6 +27,7 @@ RN_Dict = {
 'RIL_113' :'RIL_113.rn',
 'RIL_265' :'RIL_113.rn',
 }
+
 print RN_Dict
 keys   = RN_Dict.keys()
 values = RN_Dict.values()
@@ -35,10 +36,10 @@ print values
 
 # Open a file
 #cody_2 path laptop
-#path = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof/"
-
+path = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof/"
+path2 = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof.renamed/"
 #cody_1 path home imac
-path = '/Users/Cody/Documents/Maloof Lab/My Brassica/Block2/project.maloof/'
+#path = '/Users/Cody/Documents/Maloof Lab/My Brassica/Block2/project.maloof/'
 pathfiles = os.listdir(path)
 
 for file in pathfiles:
@@ -60,43 +61,26 @@ for file in pathfiles:
 
         capture = Blk + Blk_number + underscore1 + RIL + underscore2 + RIL_num + underscore3 + treatment + dot + fq
         RIL_string = RIL + underscore2 + RIL_num
-        print lead
         print capture
         print RIL_string
-        print 
-        print 
-        print
         
-        for key in RN_Dict:
-            link_name = source_name.replace(RIL_string, RN_Dict[key])
-            print 'Source name is:'
-            print source_name
-            print '----------------'
-            print 'Link name is:'
-            print link_name
-            print '----------------'
-            print '----------------'
-print 
-print 
-print
-
-# for key in RN_Dict:
-#     link_name = source_name.replace(key, RN_Dict[key])
-#     print source_name
-#     print link_name
-#     os.symlink('source_name', 'link_name')
-#             print file
-#             print source_name
-#             print link_name
+        if RIL_string in RN_Dict:
+            print "Making RIL name replacement. Old Name: %s; New Name: %s" % (RIL_string, RN_Dict[RIL_string])
+            link_name_y = source_name.replace(RIL_string, RN_Dict[RIL_string])
+            print link_name_y
+            symlinktarget = path  + source_name
+            symlinkpath   = path2 + link_name_y
+            print symlinktarget
+            print symlinkpath
+            os.symlink(symlinktarget, symlinkpath)
+        else: 
+            print "No it is not!"   
+                
+        print 
+        print 
+        print 
 
 
-# for file in pathfiles:
-#     source_name = file
-#     link_name =  '%s.rn.fq' %(source_name)
-#     os.symlink(source_name, link_name)
-#     print file
-#     print source_name
-#     print link_name
 
 
 
