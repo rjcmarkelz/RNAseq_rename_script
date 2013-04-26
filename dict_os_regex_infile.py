@@ -18,11 +18,11 @@ with open('block_2_3_nocontaminants_play.csv', 'rU') as f:
         print RN_Dict
 
 # RN_Dict = {
-# 'RIL_360.12' :'RIL_1.rn',
-# 'RIL_73'  :'RIL_4.rn',
-# 'RIL_259' :'RIL_103.rn',
-# 'RIL_251' :'RIL_104.rn',
-# 'RIL_113' :'RIL_113.rn',
+# 'RIL_360.12' :'RIL_1',
+# 'RIL_73'  :'RIL_4',
+# 'RIL_259' :'RIL_103',
+# 'RIL_251' :'RIL_104',
+# 'RIL_113' :'RIL_113',
 # 'RIL_265' :'RIL_113.rn',
 # }
 
@@ -64,6 +64,7 @@ re10='(.)'                  # dot (any character)
 re11='((?:[a-z][a-z]+))'    # fq 
 
 rg = re.compile(re1+re2+re3+re4+re5+re6+re7+re8+re9+re10+re11,re.IGNORECASE|re.DOTALL)
+
 ######################################################
 ######################################################
 
@@ -96,7 +97,7 @@ for file in pathfiles:
         
         if RIL_string in RN_Dict:
             print "Making RIL name replacement. \n Old Name: %s; \n New Name: %s" % (oldname, RN_Dict[RIL_string])
-            link_name = source_name.replace(oldname, RN_Dict[RIL_string])
+            link_name = 'RN_' + source_name.replace(oldname, RN_Dict[RIL_string])
             print "Symbolic link will have name:", link_name
             symlinktarget = path  + source_name
             symlinkpath   = path2 + link_name
@@ -110,7 +111,8 @@ for file in pathfiles:
         print 
         print 
 
-
+######################################################
+######################################################
 
 
 
