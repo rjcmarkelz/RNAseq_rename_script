@@ -1,6 +1,6 @@
 RN_Dict = {
 'RIL_360.12' :'RIL_1(contaminated?)',
-'RIL_73'  :'RIL_4',
+'RIL_73'  :'RIL_4(con)',
 'RIL_259' :'RIL_103(contaminated?)',
 'RIL_251' :'RIL_IMB211',
 'RIL_113' :'(SIG_CON)',
