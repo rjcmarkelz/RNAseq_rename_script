@@ -26,17 +26,40 @@ import os
 #     	# print ' 1  2   3  '.split()
 #         print row
 
-# import csv
-# with open('block_2_3_nocontaminants_play.csv', 'rU') as f:
-#     reader = csv.reader(f)
-#     for row in reader:
-#         print row
+
+with open('block_2_3_nocontaminants_play.csv', 'rU') as f:
+    reader = csv.reader(f)
+    for row in reader:
+        print row
+
+data = dict()
+with open('block_2_3_nocontaminants_play.csv', 'rU') as f:
+    reader = csv.reader(f)
+    for row in reader:
+        old = row[0]
+        new = row[1]
+        data[old] = new
+        print data
+        #dictionary = dict(zip(key, value))
+#print dictionary
 
 
 
-with open("block_2_3_nocontaminants_play.csv") as fd:
-    d = dict(line.strip().split(',', 1) for line in fd)
-    print d
+# with open("block_2_3_nocontaminants_play.csv") as fd:
+#     d = dict(line.rstrip().split(',', 1) for line in fd)
+#     print d
+
+# f = open("block_2_3_nocontaminants_play.csv", 'r')
+# d = {}
+# for line in f:
+# 	print line
+# 	k, v = line.strip().split(',', 1)
+# 	d[k.strip()] = v.strip()
+# f.close()
+# print d
+
+# d = dict((line.strip().split(',') for line in file("block_2_3_nocontaminants_play.csv")))
+
 
 
 
