@@ -4,7 +4,32 @@ import re
 import csv
 
 
+######################################################
+######################################################
+# Open a file
+#cody_2 path laptop
+#path = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof/"
+#path2 = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof.renamed/"
 
+cody_1 path home imac
+path  = "/Users/Cody/Documents/Maloof Lab/My Brassica/Block2/project.maloof/"
+path2 = "/Users/Cody/Documents/Maloof Lab/My Brassica/Block2/project.maloof.rename/"
+
+
+# #user input
+# path  = raw_input("Enter the absolute path for the input directory: ")
+# print "------------------"
+# print "You entered ", path
+# print "------------------"
+# print "------------------"
+
+# path2 = raw_input("Now enter the absolute path for the directory containing the symbolic links: ")
+# print "------------------"
+# print "You entered ", path2
+# print "------------------"
+# print "------------------"
+
+pathfiles = os.listdir(path)
 ###################################################
 ###################################################
 
@@ -17,6 +42,7 @@ with open('block_2_3_nocontaminants_play.csv', 'rU') as f:
         RN_Dict[old] = new
         print RN_Dict
 
+#Small play dictionary for quick testing
 # RN_Dict = {
 # 'RIL_360.12' :'RIL_1',
 # 'RIL_73'  :'RIL_4',
@@ -34,18 +60,7 @@ print values
 
 
 
-######################################################
-######################################################
-# Open a file
-#cody_2 path laptop
-#path = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof/"
-#path2 = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof.renamed/"
 
-#cody_1 path home imac
-path  = "/Users/Cody/Documents/Maloof Lab/My Brassica/Block2/project.maloof/"
-path2 = "/Users/Cody/Documents/Maloof Lab/My Brassica/Block2/project.maloof.rename/"
-
-pathfiles = os.listdir(path)
 ######################################################
 ######################################################
 
