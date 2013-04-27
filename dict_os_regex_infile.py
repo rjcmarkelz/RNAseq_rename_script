@@ -11,9 +11,9 @@ import sys
 ######################################################
 ######################################################
 
-block_num = sys.argv[1]
-path = "/Users/Cody_2/git.repos/RILS/Block%s/project.maloof/" % (block_num)
-path2 = "/Users/Cody_2/git.repos/RILS/Block%s/project.maloof.renamed/" % (block_num)
+# block_num = sys.argv[1]
+# path = "/Users/Cody_2/git.repos/RILS/Block%s/project.maloof/" % (block_num)
+# path2 = "/Users/Cody_2/git.repos/RILS/Block%s/project.maloof.renamed/" % (block_num)
 
 # path  = sys.argv[1]
 # path2  = sys.argv[2]
@@ -56,14 +56,8 @@ RN_Dict = {
 'RIL_265' :'RIL_113.rn',
 }
 
-# print RN_Dict
-# keys   = RN_Dict.keys()
-# values = RN_Dict.values()
-# print keys
-# print values
-# RN_Dict = dict()
 
-# with open('block_2_3_nocontaminants_play.csv', 'rU') as f:
+# with open('entire_rename_list.csv', 'rU') as f:
 #     reader = csv.reader(f)
 #     for row in reader:
 #         old = row[0]
