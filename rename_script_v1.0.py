@@ -15,16 +15,17 @@ import sys
 # path = "/Users/Cody_2/git.repos/RILS/Block%s/project.maloof/" % (block_num)
 # path2 = "/Users/Cody_2/git.repos/RILS/Block%s/project.maloof.renamed/" % (block_num)
 
-#path  = sys.argv[1]
-#path2  = sys.argv[2]
+#Provide target directory [1] and symbolic link directories [2]
+path  = sys.argv[1]
+path2  = sys.argv[2]
 
 #cody_1 path home imac
 # path  = "/Users/Cody/Documents/Maloof Lab/My Brassica/Block2/project.maloof/"
 # path2 = "/Users/Cody/Documents/Maloof Lab/My Brassica/Block2/project.maloof.rename/"
 
 #cody_2 path laptop
-path = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof/"
-path2 = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof.renamed/"
+#path = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof/"
+#path2 = "/Users/Cody_2/git.repos/RILS/Block1/project.maloof.renamed/"
 
 # #user input
 # path  = raw_input("Enter the absolute path for the input directory: ")
@@ -46,25 +47,31 @@ pathfiles = os.listdir(path)
 ###################################################
 
 #Small play dictionary for quick testing
+# RN_Dict = {
+# 'RIL_360.02' :'RIL_1',
+# 'RIL_73.02'  :'RIL_4',
+# 'RIL_259.0' :'RIL_103(contaminated?)',
+# 'RIL_251' :'RIL_IMB211',
+# 'RIL_341' :'SIG_CON',
+# 'RIL_265' :'RIL_113.rn',
+# }
+###################################################
+###################################################
+#infile .csv and populate a dictionary
+#oldnames will be keys, correct names will be values
 
-RN_Dict = {
-'RIL_360.02' :'RIL_1',
-'RIL_73.02'  :'RIL_4',
-'RIL_259.0' :'RIL_103(contaminated?)',
-'RIL_251' :'RIL_IMB211',
-'RIL_341' :'SIG_CON',
-'RIL_265' :'RIL_113.rn',
-}
+RN_Dict = {}
+with open('block_2_3_nocontaminants_play.csv', 'rU') as f:
+    reader = csv.reader(f)
+    for row in reader:
+        old = row[0]
+        new = row[1]
+        RN_Dict[old] = new
+        print RN_Dict
 
 
-# with open('entire_rename_list.csv', 'rU') as f:
-#     reader = csv.reader(f)
-#     for row in reader:
-#         old = row[0]
-#         new = row[1]
-#         RN_Dict[old] = new
-#         print RN_Dict
-
+#use only the uncontaminated RILs
+#create two new dictionaries, 1 for contaminated, 1 for uncontaminated
 re12 = '^RIL'
 re13 = '_' 
 re14 = '([A-Z0-9]+$)'
@@ -77,17 +84,20 @@ for key in RN_Dict:
     match = rg2.search(RN_Dict[key])
     if match:
         Uncon_Dict[key] = RN_Dict[key]
-        print "Uncontaminated: ", RN_Dict[key]
+        #print "Uncontaminated: ", RN_Dict[key]
     else:
         Con_Dict[key] = RN_Dict[key]
-        print "Contaminated: ", RN_Dict[key]
-        
+        #print "Contaminated: ", RN_Dict[key]
+
+#printing for debugging       
 #print Uncon_Dict
 #print Con_Dict
 ######################################################
 ######################################################
 
 #text string examples for pattern matching of following regexs
+#these are simlilar file names as those stored in the pathfiles object
+
 #'JD002_6_NoIndex_L005_R1_all.fastq.gz.Blk2_RIL_332_CR.fq'
 #'JD002_6_NoIndex_L005_R1_all.fastq.gz.Blk2_RIL_IMB211_CR.fq'
 
@@ -107,7 +117,15 @@ rg = re.compile(re1+re2+re3+re4+re5+re6+re7+re8+re9+re10+re11,re.IGNORECASE|re.D
 
 ######################################################
 ######################################################
-
+#iterate through each file name in the pathfiles object
+#capture the RIL names
+#make a converted block number (conv_Blk_num) to match the 
+#####Dictionary keys
+#Replace incorrect names with correct RIL names
+#create a target directory/file path
+#create a symlink directory/file path, 'RN_' added to beginning to file name
+#make a symbolic link from the old incorrect file name to
+####correct RIL name
 for fn in pathfiles:
     source_name = fn
     print source_name
@@ -127,7 +145,7 @@ for fn in pathfiles:
         
         #remake block number to match dictionary key
         conv_Blk_num = '.' + str(Blk_number).zfill(2)
-        print conv_Blk_num
+        #print conv_Blk_num
 
         # capture = Blk + Blk_number + underscore1 + RIL + underscore2 + RIL_num + underscore3 + treatment + dot + fq
         # print capture
@@ -138,6 +156,8 @@ for fn in pathfiles:
         RIL_string = RIL + underscore2 + RIL_num + conv_Blk_num
         #print RIL_string
         
+        #replace dictionary keys with values, or incorrect to correct RIL names
+        #based on genotyping
         if RIL_string in Uncon_Dict:
             print "Making RIL name replacement. \n Old Name: %s; \n New Name: %s" % (oldname, Uncon_Dict[RIL_string])
             link_name = 'RN_' + source_name.replace(oldname, Uncon_Dict[RIL_string])
